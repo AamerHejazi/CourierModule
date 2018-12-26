@@ -1,0 +1,12 @@
+<div >
+    <h2>Update {{courier.nameAr}}</h2>
+    <div style="float:left;margin:30px;">
+        <input type="text" ng-model="courier.nameAr" placeholder="Enter Arabic name" class="form-control"  required/>
+        <input type="text" ng-model="courier.nameEn" placeholder="Enter English name" class="form-control" required/>
+        <input type="text" ng-model="courier.mobile" placeholder="Enter mobile number" class="form-control" required/><br><br>
+
+        <button ng-click="saveItem()" class="btn btn-outline-primary">Update</button>
+        <button ng-click="cancel()" class="btn btn-outline-primary">Cancel</button>
+    </div>
+    <div>{{courier | json}}</div>
+</div>

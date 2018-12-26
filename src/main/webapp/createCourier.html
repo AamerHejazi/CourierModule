@@ -1,0 +1,15 @@
+<div >
+    <h2>Create New Courier</h2>
+    <div style="float:left;margin:30px;">
+        <form name="newCourier">
+            <input class="form-control" ng-model="courier.nameAr" placeholder="Enter Arabic name" ng-required="" type="text"/>
+            <input class="form-control" ng-model="courier.nameEn" placeholder="Enter English name" ng-required="" type="text"/>
+            <input class="form-control" ng-model="courier.mobile" placeholder="Enter mobile number" ng-required="" type="number"/><br><br>
+
+            <button class="btn btn-outline-primary" ng-click="save()">save</button>
+            <button class="btn btn-outline-primary" ng-click="cancel()">cancel</button>
+            <button class="btn btn-outline-primary" ng-click="listallCouriers()">list all couriers</button>
+        </form>
+    </div>
+    <div>{{courier | json}}</div>
+</div>

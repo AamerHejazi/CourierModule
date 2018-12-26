@@ -1,0 +1,11 @@
+#ignore node_modules
+node_modules/
+
+#ignore package.json
+package.json
+
+#ignore yarn.lock
+yarn.lock
+
+#ignore yarn-error.log
+yarn-error.log

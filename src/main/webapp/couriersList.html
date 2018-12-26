@@ -1,0 +1,40 @@
+<div>
+    <div class="col-md-2 inset" ng-cloak>
+        Search: <input ng-model="courierSearch" placeholder="Search" type="text">
+
+    </div>
+
+    </br>
+
+    <div>
+
+        <table class="table table-striped" id="couriersTable" style="">
+            <tr>
+                <th>#</th>
+                <th>الاسم(عربي)</th>
+                <th>الاسم(انجليزي)</th>
+                <th>رقم الجوال</th>
+                <th>IS ACTIVE</th>
+            </tr>
+            <tr ng-repeat="courier in couriers | filter:  courierSearch">
+                <td>{{ courier.courierId }}</td>
+                <td>{{ courier.nameAr }}</td>
+                <td>{{ courier.nameEn }}</td>
+                <td>{{ courier.mobile }}</td>
+                <td>{{courier.active}}</td>
+                <td>
+                    <button class="btn btn-outline-danger custom" ng-click="removeOneCourier(courier)">
+                        Delete
+                    </button>
+                    <button class="btn btn-outline-primary custom" ng-click="editOneCourier(courier)">
+                        Edit
+                    </button>
+                    <button class="btn btn-outline-success" ng-click="disable(courier)" ng-if="courier.active">Disable</button>
+                    <button class="btn btn-outline-danger" ng-click="enable(courier)" ng-if="!courier.active">Enable</button>
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-outline-primary" ng-click="createCourier()">Create new courier</button>
+        <button class="btn btn-outline-primary custom "><a href="#/">Home Page</a></button>
+    </div>
+</div>

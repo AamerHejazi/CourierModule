@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Couriers Application</title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="node_modules/angular-material/angular-material.min.css" rel="stylesheet" type="text/css">
+    <link href="node_modules/bootstrap-toggle/css/bootstrap-toggle.min.css" rel="stylesheet" type="text/css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
+    <script src="couriersModule.js"></script>
+    <script src="app-module.js"></script>
+</head>
+<body ng-app='applicationModule'>
+
+
+<div class="row">
+    <div class="col-sm-12 mb-1 p-4 bg-secondary text-white well">
+
+        <md-toolbar>
+            <h1>Couriers</h1>
+            <a href="#/">Home</a>
+        </md-toolbar>
+    </div>
+</div>
+
+<div class="container-fluid h-100">
+<div class="row">
+
+    <div class="col-md-2 bg-secondary no-float text-white">
+        <h2>List</h2>
+        <nav>
+            <ul>
+                <li>
+                    <a class="btn btn-outline-light btn-lg btn-block mb-1 active" href="#/couriersList" role="button">Couriers</a>
+                </li>
+                <li>
+                    <a class="btn btn-outline-light btn-lg btn-block mb-1 active" href="#/newCourier" role="button">New Courier</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="col-md-10 no-float bg-warning">
+        <div ng-view></div>
+    </div>
+</div>
+</div>
+</body>
+
+</html>
