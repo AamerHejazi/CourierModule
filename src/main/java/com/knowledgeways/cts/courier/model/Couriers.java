@@ -7,8 +7,8 @@ public interface Couriers {
 
     Courier courier(Integer courierId);
 
-    void create(String nameAr, String nameEn, String mobile);
+    void create(String nameAr, String nameEn, String mobile, Integer OrganizationId);
 
-    List<Courier> courierList();
+    List<Courier> courierList(Integer organizationId);
 
 }

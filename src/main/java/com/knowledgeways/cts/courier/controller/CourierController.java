@@ -11,23 +11,27 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/app/cts/couriers")
-public class AppController {
+public class CourierController {
 
     private final Couriers couriers;
 
     @Autowired
-    public AppController(Couriers couriers) {
+    public CourierController(Couriers couriers) {
 
         this.couriers = couriers;
     }
 
-    @GetMapping
-    public List<Courier> couriers() {
-
-        return this.couriers.courierList();
+    @GetMapping("/organization")
+    public List<Courier> OrganizationCouriers(@RequestParam Integer organizationId) {
+        return this.couriers.courierList(organizationId);
     }
 
-    @GetMapping("/{courierId}")//TODO
+    @GetMapping
+    public List<Courier> AllCouriers() {
+        return this.couriers.courierList(null);
+    }
+
+    @GetMapping("/{courierId}/courier")//TODO
     public Courier courier(@PathVariable Integer courierId) {
 
         return this.couriers.courier(courierId);
@@ -39,7 +43,8 @@ public class AppController {
         String nameEn = couriersForm.getNameEn();
         String mobile = couriersForm.getMobile();
         String nameAr = couriersForm.getNameAr();
-        this.couriers.create(nameAr, nameEn, mobile);
+        Integer organizationId = couriersForm.getOrganizationId();
+        this.couriers.create(nameAr, nameEn, mobile, organizationId);
     }
 
 

@@ -132,6 +132,7 @@
                     <jdbc>
                         <driver>org.h2.Driver</driver>
                         <url>jdbc:h2:tcp://localhost//media/aamer/Data/database/Courier</url>
+                        <!--<url>jdbc:h2:/media/aamer/Data/ideaProjects/COURIER/database/Courier</url>-->
                         <user>sa</user>
                         <password></password>
                     </jdbc>

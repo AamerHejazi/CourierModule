@@ -1,5 +1,5 @@
 <div >
-    <h2>Update {{courier.nameAr}}</h2>
+    <h2>Update <span ng-bind="courier.nameAr"></span> </h2>
     <div style="float:left;margin:30px;">
         <input type="text" ng-model="courier.nameAr" placeholder="Enter Arabic name" class="form-control"  required/>
         <input type="text" ng-model="courier.nameEn" placeholder="Enter English name" class="form-control" required/>
@@ -8,5 +8,5 @@
         <button ng-click="saveItem()" class="btn btn-outline-primary">Update</button>
         <button ng-click="cancel()" class="btn btn-outline-primary">Cancel</button>
     </div>
-    <div>{{courier | json}}</div>
+    <div ng-bind="courier | json"></div>
 </div>

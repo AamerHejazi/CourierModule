@@ -1,11 +1,12 @@
 package com.knowledgeways.cts.courier.dbImplementation;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.knowledgeways.cts.courier.model.Courier;
 import org.jooq.DSLContext;
 
 import static com.knowledgeways.cts.courier.courier.tables.Couriers.COURIERS;
 
-public class CourierDB implements com.knowledgeways.cts.courier.model.Courier {
+public class CourierDB implements Courier {
 
     private final Integer courierId;
     private final DSLContext jooq;
@@ -27,9 +28,7 @@ public class CourierDB implements com.knowledgeways.cts.courier.model.Courier {
         return this.jooq.select(COURIERS.NAME_AR)
                 .from(COURIERS)
                 .where(COURIERS.COURIER_ID.eq(courierId()))
-                .fetchOne()
-                .get(0)
-                .toString();
+                .fetchOne(COURIERS.NAME_AR);
     }
 
     @JsonGetter
@@ -38,9 +37,7 @@ public class CourierDB implements com.knowledgeways.cts.courier.model.Courier {
         return this.jooq.select(COURIERS.NAME_EN)
                 .from(COURIERS)
                 .where(COURIERS.COURIER_ID.eq(courierId()))
-                .fetchOne()
-                .get(0)
-                .toString();
+                .fetchOne(COURIERS.NAME_EN);
     }
 
     @JsonGetter
@@ -49,9 +46,7 @@ public class CourierDB implements com.knowledgeways.cts.courier.model.Courier {
         return this.jooq.select(COURIERS.MOBILE)
                 .from(COURIERS)
                 .where(COURIERS.COURIER_ID.eq(courierId()))
-                .fetchOne()
-                .get(0)
-                .toString();
+                .fetchOne(COURIERS.MOBILE);
     }
 
     @JsonGetter
@@ -107,6 +102,14 @@ public class CourierDB implements com.knowledgeways.cts.courier.model.Courier {
                 .set(COURIERS.ACTIVE, false)
                 .where(COURIERS.COURIER_ID.eq(courierId()))
                 .execute();
+    }
 
+    @JsonGetter
+    @Override
+    public Integer orgnaizationId() {
+        return this.jooq.select(COURIERS.ORGANIZATION_ID)
+                .from(COURIERS)
+                .where(COURIERS.COURIER_ID.eq(courierId()))
+                .fetchOne(COURIERS.ORGANIZATION_ID);
     }
 }

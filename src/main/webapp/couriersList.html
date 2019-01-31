@@ -3,9 +3,12 @@
         Search: <input ng-model="courierSearch" placeholder="Search" type="text">
 
     </div>
+    <div>
 
-    </br>
+        <select ng-model="org" ng-options="org.nameAr for org in organizations" ng-change="specificOrganizationCouriers(org.organizationId)" required="true"></select>
+        <span ng-bind="org.organizationId"></span>
 
+    </div>
     <div>
 
         <table class="table table-striped" id="couriersTable" style="">
@@ -14,14 +17,16 @@
                 <th>الاسم(عربي)</th>
                 <th>الاسم(انجليزي)</th>
                 <th>رقم الجوال</th>
-                <th>IS ACTIVE</th>
+                <th>اﻹدارة</th>
+                <th>الحالة</th>
             </tr>
             <tr ng-repeat="courier in couriers | filter:  courierSearch">
-                <td>{{ courier.courierId }}</td>
-                <td>{{ courier.nameAr }}</td>
-                <td>{{ courier.nameEn }}</td>
-                <td>{{ courier.mobile }}</td>
-                <td>{{courier.active}}</td>
+                <td ng-bind="courier.courierId"></td>
+                <td ng-bind="courier.nameAr"></td>
+                <td ng-bind="courier.nameEn"></td>
+                <td ng-bind="courier.mobile"></td>
+                <td ng-bind="courier.orgnaizationId"></td>
+                <td ng-bind="courier.active"></td>
                 <td>
                     <button class="btn btn-outline-danger custom" ng-click="removeOneCourier(courier)">
                         Delete
@@ -29,12 +34,16 @@
                     <button class="btn btn-outline-primary custom" ng-click="editOneCourier(courier)">
                         Edit
                     </button>
-                    <button class="btn btn-outline-success" ng-click="disable(courier)" ng-if="courier.active">Disable</button>
-                    <button class="btn btn-outline-danger" ng-click="enable(courier)" ng-if="!courier.active">Enable</button>
+                    <button class="btn btn-outline-success" ng-click="disable(courier)" ng-if="courier.active">
+                        Disable
+                    </button>
+                    <button class="btn btn-outline-danger" ng-click="enable(courier)" ng-if="!courier.active">
+                        Enable
+                    </button>
                 </td>
             </tr>
         </table>
-        <button class="btn btn-outline-primary" ng-click="createCourier()">Create new courier</button>
+        <button class="btn btn-outline-primary" ng-if="org.organizationId != null" ng-click="createCourier(org.organizationId)">Create new courier</button>
         <button class="btn btn-outline-primary custom "><a href="#/">Home Page</a></button>
     </div>
 </div>

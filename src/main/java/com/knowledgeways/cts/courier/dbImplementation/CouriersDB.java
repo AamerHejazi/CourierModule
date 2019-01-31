@@ -5,6 +5,7 @@ import static com.knowledgeways.cts.courier.courier.tables.Couriers.COURIERS;
 import com.knowledgeways.cts.courier.courier.tables.records.CouriersRecord;
 import com.knowledgeways.cts.courier.model.Courier;
 import com.knowledgeways.cts.courier.model.Couriers;
+import org.jooq.Condition;
 import org.jooq.DSLContext;
 
 import java.util.List;
@@ -14,7 +15,6 @@ import java.util.stream.Collectors;
 public class CouriersDB implements Couriers {
 
     private final DSLContext jooq;
-
     public CouriersDB(DSLContext jooq) {
         this.jooq = jooq;
     }
@@ -33,7 +33,7 @@ public class CouriersDB implements Couriers {
     }
 
     @Override
-    public void create(String nameAr, String nameEn, String mobile) {
+    public void create(String nameAr, String nameEn, String mobile, Integer organizationId) {
 
         if (nameAr == null || nameAr.equals("")) {
             throw new NullPointerException("Arabic name field is empty");
@@ -44,16 +44,24 @@ public class CouriersDB implements Couriers {
         if (nameEn == null || nameEn.equals("")) {
             throw new NullPointerException("English name field is empty");
         }
+        if (organizationId == null) {
+            throw new NullPointerException("organizationId field is empty");
+        }
         this.jooq.insertInto(COURIERS)
-                .columns(COURIERS.NAME_AR, COURIERS.NAME_EN, COURIERS.MOBILE)
-                .values(nameAr, nameEn, mobile)
+                .columns(COURIERS.NAME_AR, COURIERS.NAME_EN, COURIERS.MOBILE, COURIERS.ORGANIZATION_ID)
+                .values(nameAr, nameEn, mobile, organizationId)
                 .execute();
     }
 
     @Override
-    public List<Courier> courierList() {
+    public List<Courier> courierList(Integer organizationId) {
+         Condition condition = COURIERS.ORGANIZATION_ID.eq(organizationId);
+        if(organizationId == null) {
+            condition = COURIERS.COURIER_ID.isNotNull();
+        }
         return this.jooq.select(COURIERS.COURIER_ID)
                 .from(COURIERS)
+                .where(condition)
                 .fetch(COURIERS.COURIER_ID)
                 .stream()
                 .map(courierId -> new CourierDB(courierId, jooq))

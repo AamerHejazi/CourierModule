@@ -19,4 +19,6 @@ public interface Courier {
     void enabled();
 
     void disabled();
+
+    Integer orgnaizationId();
 }
