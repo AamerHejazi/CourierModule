@@ -3,9 +3,10 @@
         Search: <input ng-model="courierSearch" placeholder="Search" type="text">
 
     </div>
-    <div>
 
-        <select ng-model="org" ng-options="org.nameAr for org in organizations" ng-change="specificOrganizationCouriers(org.organizationId)" required="true"></select>
+    <div class="col-md-2 inset">
+
+        Select Organization: <select ng-init="org" ng-model="org" ng-options="org.nameAr for org in organizations" ng-change="specificOrganizationCouriers(org.organizationId)" required="true"></select>
         <span ng-bind="org.organizationId"></span>
 
     </div>
@@ -17,8 +18,8 @@
                 <th>الاسم(عربي)</th>
                 <th>الاسم(انجليزي)</th>
                 <th>رقم الجوال</th>
-                <th>اﻹدارة</th>
-                <th>الحالة</th>
+                <th>رقم اﻹدارة</th>
+                <th>فعال</th>
             </tr>
             <tr ng-repeat="courier in couriers | filter:  courierSearch">
                 <td ng-bind="courier.courierId"></td>

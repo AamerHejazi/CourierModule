@@ -48,13 +48,14 @@ app.controller('couriersList', ['$scope', '$filter', 'remoteService', '$location
     remoteService.listOrganizations().then(function (response) {
         $scope.organizations = response.data;
         $scope.organizations.unshift({organizationId:null, nameAr:"جميع المراسلين"});
+        console.log($scope.organizations);
     });
 
 
-    remoteService.listCouriers().then(function (response) {
+   /* remoteService.listCouriers().then(function (response) {
         $scope.couriers = response.data;
         console.log($scope.couriers);
-    });
+    });*/
 
     $scope.specificOrganizationCouriers = function(id){
         remoteService.listCouriers(id).then(function (response) {
