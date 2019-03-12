@@ -29,16 +29,16 @@
                 <td ng-bind="courier.orgnaizationId"></td>
                 <td ng-bind="courier.active"></td>
                 <td>
-                    <button class="btn btn-outline-danger custom" ng-click="removeOneCourier(courier)">
+                    <button class="btn btn-outline-danger custom" ng-click="removeOneCourier(courier)" ng-if="org.organizationId != null">
                         Delete
                     </button>
-                    <button class="btn btn-outline-primary custom" ng-click="editOneCourier(courier)">
+                    <button class="btn btn-outline-primary custom" ng-click="editOneCourier(courier)" ng-if="org.organizationId != null">
                         Edit
                     </button>
-                    <button class="btn btn-outline-success" ng-click="disable(courier)" ng-if="courier.active">
+                    <button class="btn btn-outline-success" ng-click="disable(courier)" ng-if="courier.active" ng-show="org.organizationId != null">
                         Disable
                     </button>
-                    <button class="btn btn-outline-danger" ng-click="enable(courier)" ng-if="!courier.active">
+                    <button class="btn btn-outline-danger" ng-click="enable(courier)" ng-if="!courier.active" ng-show="org.organizationId != null">
                         Enable
                     </button>
                 </td>

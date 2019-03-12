@@ -82,10 +82,9 @@ app.controller('couriersList', ['$scope', '$filter', 'remoteService', '$location
     };
 
     $scope.removeOneCourier = function (courier) {
-        console.log(id);
         remoteService.removeCourier(courier.courierId).then(function (response) {
             console.log("Delete is success = " + response);
-            //$route.reload();
+            $route.reload();
         });
     };
 
@@ -139,41 +138,43 @@ app.controller('editCourier', ['$scope', '$routeParams', 'remoteService', '$loca
 
 app.service('remoteService', ['$http', function ($http) {
 
+    var organizationsUrl = '/naqel/app/cts/organizations';
+    var couriersUrl = '/naqel/app/cts/couriers/';
+
     this.listOrganizations = function () {
-      return $http.get('/naqel/app/cts/organizations')
+        return $http.get(organizationsUrl)
     };
 
     this.listCouriers = function (organizationId) {
-        if(organizationId == null){
-            return $http.get('/naqel/app/cts/couriers');
-        }
-        else {
-            return $http.get('/naqel/app/cts/couriers/organization?organizationId=' + organizationId);
+        if (organizationId == null) {
+            return $http.get(couriersUrl);
+        } else {
+            return $http.get(couriersUrl + 'organization?organizationId=' + organizationId);
         }
     };
 
     this.addCourier = function (courier) {
-        return $http.post('/naqel/app/cts/couriers', courier);
+        return $http.post(couriersUrl, courier);
     };
 
     this.enableCourier = function (id) {
-        return $http.put('/naqel/app/cts/couriers/' + id + '/enable');
+        return $http.put(couriersUrl + id + '/enable');
     };
 
     this.disableCourier = function (id) {
-        return $http.put('/naqel/app/cts/couriers/' + id + '/disable');
+        return $http.put(couriersUrl + id + '/disable');
     };
 
     this.removeCourier = function (id) {
-        return $http.delete('/naqel/app/cts/couriers/' + id);
+        return $http.delete(couriersUrl + id);
     };
-    
+
     this.getCourier = function (id) {
-        return $http.get('/naqel/app/cts/couriers/' + id +'/courier');
+        return $http.get(couriersUrl + id + '/courier');
     };
 
     this.updateCourier = function (courier, id) {
-        return $http.put('/naqel/app/cts/couriers/' + id, courier);
+        return $http.put(couriersUrl + id, courier);
     };
 
 }]);
