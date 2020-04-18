@@ -1,6 +1,6 @@
 # CourierModule
 
-**Note: In this project I have been used **MAVEN**, **Spring 5** , **Angular JS**, **Jooq** (Object Oriented Querying) and **HikariCP** connection pool.
+**Note:** In this project I have been used **MAVEN**, **Spring 5** , **Angular JS**, **Jooq** (Object Oriented Querying) and **HikariCP** connection pool.
 
 To Run This program you will need to download **H2 Database Engine** on your macheine and **yarn** tool
 
