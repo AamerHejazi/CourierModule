@@ -1,5 +1,6 @@
 package com.knowledgeways.cts.courier.dbImplementation;
 import static com.knowledgeways.cts.courier.courier.tables.Organizations.ORGANIZATIONS;
+
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.knowledgeways.cts.courier.model.Organization;
 import org.jooq.DSLContext;

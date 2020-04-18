@@ -10,23 +10,19 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: 'homePage.html'
         })
         .when('/newCourier/:organizationId', { //TODO
-
             templateUrl: 'createCourier.html',
             controller: 'createCouriers',
             caseInsensitiveMatch: true
         })
         .when('/couriersList', {
-
             templateUrl: 'couriersList.html',
             controller: 'couriersList'
         })
         .when('/editCourier/:id', {
-
             templateUrl: 'editCourier.html',
             controller: 'editCourier'
         })
         .when('/home', {
-
             templateUrl: 'homePage.html',
             controller: 'homeController'
         })
@@ -102,7 +98,7 @@ app.controller('createCouriers', ['$scope', 'remoteService', '$location', '$inte
         $location.path($interpolate('/couriersList')($scope));
     };
 
-    $scope.listallCouriers = function () {
+    $scope.listAllCouriers = function () {
         $location.path($interpolate('/couriersList')($scope));
     };
 
@@ -138,8 +134,8 @@ app.controller('editCourier', ['$scope', '$routeParams', 'remoteService', '$loca
 
 app.service('remoteService', ['$http', function ($http) {
 
-    var organizationsUrl = '/naqel/app/cts/organizations';
-    var couriersUrl = '/naqel/app/cts/couriers/';
+    var organizationsUrl = '/couriers/app/cts/organizations';
+    var couriersUrl = '/couriers/app/cts/couriers/';
 
     this.listOrganizations = function () {
         return $http.get(organizationsUrl)

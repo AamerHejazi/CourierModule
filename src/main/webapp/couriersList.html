@@ -4,7 +4,7 @@
 
     </div>
 
-    <div class="col-md-2 inset">
+    <div class="col-md-2">
 
         Select Organization: <select ng-init="org" ng-model="org" ng-options="org.nameAr for org in organizations" ng-change="specificOrganizationCouriers(org.organizationId)" required="true"></select>
         <span ng-bind="org.organizationId"></span>
