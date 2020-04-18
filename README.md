@@ -33,6 +33,19 @@ To Run This program you will need to download **H2 Database Engine** on your mac
   - **bootstrap-toggle** version **2.2.2**
   - **jquery** version **3.3.1**
 
+### Jetty runing
+I added jetty server inside bom.xml to run the web application, But we need a command to run this server, So we will configure it inside intellij idea IDE in below steps.
+  - From IntelliJ, Clcik on **Run** button > Edit Configuration.
+  - Click Add New Configuration (the plus sign).
+  - Choose **Maven**.
+  - Name it **Jetty run** (or whatever you like).
+  - Choose the appropriate working directory it will be filled by default.
+  - In Command line, enter **jetty:run**.
+  - Click Apply and OK
+  - Click the Runners menu then choose your Runner and click **run button**
+ 
+
 ### Finally 
 -- Our project is ready to run
-  
+
+**NOTE: Disconnect the H2 from your database because if you don't it will cause an error when you run your application from intellij idea IDE because can't connect to the database from two different places at same time, This happend because we used embedded H2 database**
